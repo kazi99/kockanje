@@ -9,23 +9,61 @@ ZACETEK = [0 for _ in range(len(KOCKA) - 1)]
 
 STEVILO_METOV = 3
 
-TABELA = {}
+TABELA = {'zgornja polovica': {'Enke': None, 'Dvojke': None, 'Trojke': None, 'Štirke': None, 'Petke': None, 'Šestke': None}, 'spodnja polovica': {'Tri enake': None, 'Štiri enake': None, 'Full': None, 'Zaporedje štirih zaporednih': None, 'Zaporedje petih zaporednih': None, 'Yahtzee': None, 'Chance': None}}
+
+ST_POTEZ_zg = 6
+ST_POTEZ_sp = 7 
 
 import random
 
-class kockanje:
+#-----------------------------Preverjanje kombinacij----------------------------------------
 
-    def __init__(self, met=ZACETEK): #preostanek_metov=STEVILO_METOV
+# kombinacij iz zgornje polovice ne bom preverjal, ker si jih lahko kadarkoli vpišeš, njhova vrednost bo samo skupno število pojavitev željenega simbola
+
+def n_enake(met, n):            #pokrije 'Tri enake', 'Štiri enake', 'Yahtzee'
+    for simbol in met:
+        if met.count(simbol) >= n:
+            return True
+    return False
+
+def full(met):
+    for simbol in met:
+        if met.count(simbol) == 3:
+            if len(list(set([st for st in met if st != simbol]))) == 1:
+                return True
+    return False
+
+def stiri_zaporedne(met):       
+    mn = set(met)
+    return {1,2,3,4}.issubset(mn) or {2,3,4,5}.issubset(mn) or {3,4,5,6}.issubset(mn)
+
+def pet_zaporednih(met):
+    mn = set(met)
+    return {1,2,3,4,5}.issubset(mn) or {2,3,4,5,6}.issubset(mn)
+
+#-------------------------------------------------------------------------------------------
+
+class metanje:
+
+    def __init__(self, met=ZACETEK, preostanek_metov=STEVILO_METOV): #preostanek_metov=STEVILO_METOV
         self.met = met
+        self.preostanek_metov = preostanek_metov
 
 
     def vrzi(self, izbira='ABCDE'):
-        
-        if izbira != 'ABCDE':
-            izbira = izbira.upper()
-            izbira = list(set(list(izbira)))
+        if self.preostanek_metov > 0:
 
-        for i in izbira:
-            if i in 'ABCDE':
-                self.met[eval(i)]= random.choice(KOCKA)
+            if izbira != 'ABCDE':
+                izbira = izbira.upper()
+                izbira = list(set(list(izbira)))
+
+            for i in izbira:
+                if i in 'ABCDE':
+                    self.met[eval(i)]= random.choice(KOCKA)
+
+            self.preostanek_metov -= 1        
+            return self.met
+
+        else:
+            return self.met
 
