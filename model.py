@@ -58,7 +58,7 @@ class metanje:
 
             for i in izbira:
                 if i in 'ABCDE':
-                    self.met[eval(i)]= random.choice(KOCKA)
+                    self.met[eval(i)] = random.choice(KOCKA)
 
             self.preostanek_metov -= 1        
             return self.met
