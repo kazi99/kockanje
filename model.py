@@ -9,10 +9,9 @@ ZACETEK = [0 for _ in range(len(KOCKA) - 1)]
 
 STEVILO_METOV = 3
 
-TABELA = {'zgornja polovica': {'Enke': None, 'Dvojke': None, 'Trojke': None, 'Štirke': None, 'Petke': None, 'Šestke': None}, 'spodnja polovica': {'Tri enake': None, 'Štiri enake': None, 'Full': None, 'Zaporedje štirih zaporednih': None, 'Zaporedje petih zaporednih': None, 'Yahtzee': None, 'Chance': None}}
+TABELA = {'Enke': None, 'Dvojke': None, 'Trojke': None, 'Štirke': None, 'Petke': None, 'Šestke': None, 'Tri enake': None, 'Štiri enake': None, 'Full': None, 'Zaporedje štirih zaporednih': None, 'Zaporedje petih zaporednih': None, 'Yahtzee': None, 'Chance': None}
 
-ST_POTEZ_zg = 6
-ST_POTEZ_sp = 7 
+ST_POTEZ = 13
 
 import random
 
@@ -45,7 +44,7 @@ def pet_zaporednih(met):
 
 class metanje:
 
-    def __init__(self, met=ZACETEK, preostanek_metov=STEVILO_METOV): #preostanek_metov=STEVILO_METOV
+    def __init__(self, met=ZACETEK, preostanek_metov=STEVILO_METOV): 
         self.met = met
         self.preostanek_metov = preostanek_metov
 
@@ -67,3 +66,17 @@ class metanje:
         else:
             return self.met
 
+class kockanje:
+
+    def __init__(self, tabela=TABELA, poteze=ST_POTEZ):
+        self.tabela = tabela
+        self.poteze = poteze
+
+    def naslednja_poteza(self):
+        if self.poteze > 0:
+            self.poteze -= 1
+            return metanje()
+        else:
+            return None
+
+#    def tockovanje(self, kombinacija):
