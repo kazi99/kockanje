@@ -81,7 +81,7 @@ class Kockanje:
                 self.preostanek_metov = STEVILO_METOV
                 self.trenutni_met = ZACETEK
             else:
-                pass
+                raise Exception
 
     def preveri_tabelo(self, ime_kombinacije):  
         """Preveri ali je kombinacija še odprta v tabeli"""
@@ -117,27 +117,30 @@ class Kockanje:
         met = self.trenutni_met
         if ime_kombinacije in ['Enke', 'Dvojke', 'Trojke', 'Štirke', 'Petke', 'Šestke']:
             if ime_kombinacije == 'Enke': i = 1
-            if ime_kombinacije == 'Dvojke': i = 2
-            if ime_kombinacije == 'Trojke': i = 3
-            if ime_kombinacije == 'Štirke': i = 4
-            if ime_kombinacije == 'Petke': i = 5
-            if ime_kombinacije == 'Šestke': i = 6
+            elif ime_kombinacije == 'Dvojke': i = 2
+            elif ime_kombinacije == 'Trojke': i = 3
+            elif ime_kombinacije == 'Štirke': i = 4
+            elif ime_kombinacije == 'Petke': i = 5
+            elif ime_kombinacije == 'Šestke': i = 6
             self.tabela[ime_kombinacije] = met.count(i) * i
 
-        if ime_kombinacije in ['Tri enake', 'Štiri enake', 'Chance']:
+        elif ime_kombinacije in ['Tri enake', 'Štiri enake', 'Chance']:
             self.tabela[ime_kombinacije] = sum(met)
 
-        if ime_kombinacije == 'Full':
+        elif ime_kombinacije == 'Full':
             self.tabela[ime_kombinacije] = 25
             
-        if ime_kombinacije == 'Zaporedje štirih zaporednih':
+        elif ime_kombinacije == 'Zaporedje štirih zaporednih':
             self.tabela[ime_kombinacije] = 30
 
-        if ime_kombinacije == 'Zaporedje petih zaporednih':
+        elif ime_kombinacije == 'Zaporedje petih zaporednih':
             self.tabela[ime_kombinacije] = 40
 
-        if ime_kombinacije == 'Yahtzee':
+        elif ime_kombinacije == 'Yahtzee':
             self.tabela[ime_kombinacije] = 50
+
+        else:
+            self.tabela[ime_kombinacije] = 0
 
     def konec_kockanja(self):
         for key in self.tabela:
