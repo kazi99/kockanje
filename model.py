@@ -54,6 +54,10 @@ class Kockanje:
         self.odprte_kombinacije = odprte_kombinacije
 
     def vrzi(self, izbira='ABCDE'):
+        if self.preostanek_metov == STEVILO_METOV:
+            for i in range(5):
+                self.trenutni_met[i] = random.choice(KOCKA)
+
         if self.preostanek_metov > 0:
 
             if izbira != 'ABCDE':
@@ -68,7 +72,8 @@ class Kockanje:
         if self.preostanek_metov > 0:
             self.preostanek_metov -= 1
         else:
-            raise ValueError
+            self.trenutni_met = ZACETEK
+            self.poteze -= 1
     
     def naslednja_poteza(self):
             if self.poteze > 0:
@@ -76,7 +81,7 @@ class Kockanje:
                 self.preostanek_metov = STEVILO_METOV
                 self.trenutni_met = ZACETEK
             else:
-                raise ValueError
+                pass
 
     def preveri_tabelo(self, ime_kombinacije):  
         """Preveri ali je kombinacija še odprta v tabeli"""
@@ -134,3 +139,8 @@ class Kockanje:
         if ime_kombinacije == 'Yahtzee':
             self.tabela[ime_kombinacije] = 50
 
+    def konec_kockanja(self):
+        for key in self.tabela:
+            if self.tabela[key] == None:
+                return False
+        return True
