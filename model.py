@@ -11,6 +11,8 @@ STEVILO_METOV = 3
 
 TABELA = {'Enke': None, 'Dvojke': None, 'Trojke': None, 'Štirke': None, 'Petke': None, 'Šestke': None, 'Tri enake': None, 'Štiri enake': None, 'Full': None, 'Zaporedje štirih zaporednih': None, 'Zaporedje petih zaporednih': None, 'Yahtzee': None, 'Chance': None}
 
+KOMBINACIJE = [key for key in TABELA]
+
 ST_POTEZ = 13
 
 import random
@@ -42,12 +44,14 @@ def pet_zaporednih(met):
 
 #-------------------------------------------------------------------------------------------
 
-class metanje:
+class kockanje:
 
-    def __init__(self, met=ZACETEK, preostanek_metov=STEVILO_METOV): 
-        self.met = met
+    def __init__(self, tabela=TABELA, poteze=ST_POTEZ, preostanek_metov=STEVILO_METOV, trenutni_met=ZACETEK, odprte_kombinacije=KOMBINACIJE):
+        self.tabela = tabela
+        self.poteze = poteze
         self.preostanek_metov = preostanek_metov
-
+        self.trenutni_met = trenutni_met
+        self.odprte_kombinacije = odprte_kombinacije
 
     def vrzi(self, izbira='ABCDE'):
         if self.preostanek_metov > 0:
@@ -58,25 +62,75 @@ class metanje:
 
             for i in izbira:
                 if i in 'ABCDE':
-                    self.met[eval(i)] = random.choice(KOCKA)
-
-            self.preostanek_metov -= 1        
-            return self.met
-
+                    self.trenutni_met[eval(i)] = random.choice(KOCKA)     
+            
+    def naslednji_met(self):
+        if self.preostanek_metov > 0:
+            self.preostanek_metov -= 1
         else:
-            return self.met
-
-class kockanje:
-
-    def __init__(self, tabela=TABELA, poteze=ST_POTEZ):
-        self.tabela = tabela
-        self.poteze = poteze
-
+            raise ValueError
+    
     def naslednja_poteza(self):
-        if self.poteze > 0:
-            self.poteze -= 1
-            return metanje()
-        else:
-            return None
+            if self.poteze > 0:
+                self.poteze -= 1
+                self.preostanek_metov = STEVILO_METOV
+                self.trenutni_met = ZACETEK
+            else:
+                raise ValueError
 
-#    def tockovanje(self, kombinacija):
+    def preveri_tabelo(self, ime_kombinacije):  
+        """Preveri ali je kombinacija še odprta v tabeli"""
+
+        if ime_kombinacije not in self.odprte_kombinacije:
+            return False
+        else:
+            self.odprte_kombinacije.pop(ime_kombinacije)
+            return True
+
+    def preveri_kombinacijo(self, ime_kombinacije): 
+        """Preveri ali kombinacija v metu ustreza imenu kombinacje v tabeli"""
+
+        met = self.trenutni_met
+        if ime_kombinacije == 'Tri enake': 
+            return n_enake(met, 3)
+        if ime_kombinacije == 'Štiri enake':
+            return n_enake(met, 4)
+        if ime_kombinacije == 'Yahtzee':
+            return n_enake(met, 5)
+        if ime_kombinacije == 'Full':
+            return full(met)
+        if ime_kombinacije == 'Zaporedje štirih zaporednih':
+            return stiri_zaporedne(met)
+        if ime_kombinacije == 'Zaporedje petih zaporednih':
+            return pet_zaporednih(met)
+
+
+    def tockovanje(self, ime_kombinacije):   
+        """V tabelo zapiše ustrezen rezultat za dano kombinacijo"""
+        
+
+        met = self.trenutni_met
+        if ime_kombinacije in ['Enke', 'Dvojke', 'Trojke', 'Štirke', 'Petke', 'Šestke']:
+            if ime_kombinacije == 'Enke': i = 1
+            if ime_kombinacije == 'Dvojke': i = 2
+            if ime_kombinacije == 'Trojke': i = 3
+            if ime_kombinacije == 'Štirke': i = 4
+            if ime_kombinacije == 'Petke': i = 5
+            if ime_kombinacije == 'Šestke': i = 6
+            self.tabela[ime_kombinacije] = met.count(i) * i
+
+        if ime_kombinacije in ['Tri enake', 'Štiri enake', 'Chance']:
+            self.tabela[ime_kombinacije] = sum(met)
+
+        if ime_kombinacije == 'Full':
+            self.tabela[ime_kombinacije] = 25
+            
+        if ime_kombinacije == 'Zaporedje štirih zaporednih':
+            self.tabela[ime_kombinacije] = 30
+
+        if ime_kombinacije == 'Zaporedje petih zaporednih':
+            self.tabela[ime_kombinacije] = 40
+
+        if ime_kombinacije == 'Yahtzee':
+            self.tabela[ime_kombinacije] = 50
+
