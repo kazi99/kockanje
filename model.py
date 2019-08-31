@@ -44,7 +44,7 @@ def pet_zaporednih(met):
 
 #-------------------------------------------------------------------------------------------
 
-class kockanje:
+class Kockanje:
 
     def __init__(self, tabela=TABELA, poteze=ST_POTEZ, preostanek_metov=STEVILO_METOV, trenutni_met=ZACETEK, odprte_kombinacije=KOMBINACIJE):
         self.tabela = tabela
@@ -84,7 +84,7 @@ class kockanje:
         if ime_kombinacije not in self.odprte_kombinacije:
             return False
         else:
-            self.odprte_kombinacije.pop(ime_kombinacije)
+            self.odprte_kombinacije.remove(ime_kombinacije)
             return True
 
     def preveri_kombinacijo(self, ime_kombinacije): 
