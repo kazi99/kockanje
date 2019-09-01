@@ -23,7 +23,7 @@ ZACETEK = [0 for _ in range(len(KOCKA) - 1)]
 
 STEVILO_METOV = 3
 
-TABELA = {ENA: None, 'Dvojke': None, 'Trojke': None, 'Štirke': None, 'Petke': None, 'Šestke': None, 'Tri enake': None, 'Štiri enake': None, 'Full': None, 'Zaporedje štirih zaporednih': None, 'Zaporedje petih zaporednih': None, 'Yahtzee': None, 'Chance': None}
+TABELA = {ENA: None, DVA: None, TRI: None, STIRI: None, PET: None, SEST: None, TRIP: None, QUAD: None, FULL: None, ZAP4: None, ZAP5: None, YAHT: None, CHNC: None}
 
 KOMBINACIJE = [key for key in TABELA]
 
@@ -35,7 +35,7 @@ import random
 
 # kombinacij iz zgornje polovice ne bom preverjal, ker si jih lahko kadarkoli vpišeš, njhova vrednost bo samo skupno število pojavitev željenega simbola
 
-def n_enake(met, n):            #pokrije 'Tri enake', 'Štiri enake', 'Yahtzee'
+def n_enake(met, n):            #pokrije TRIP, QUAD, YAHT
     for simbol in met:
         if met.count(simbol) >= n:
             return True
@@ -110,17 +110,17 @@ class Kockanje:
         """Preveri ali kombinacija v metu ustreza imenu kombinacje v tabeli"""
 
         met = self.trenutni_met
-        if ime_kombinacije == 'Tri enake': 
+        if ime_kombinacije == TRIP: 
             return n_enake(met, 3)
-        if ime_kombinacije == 'Štiri enake':
+        if ime_kombinacije == QUAD:
             return n_enake(met, 4)
-        if ime_kombinacije == 'Yahtzee':
+        if ime_kombinacije == YAHT:
             return n_enake(met, 5)
-        if ime_kombinacije == 'Full':
+        if ime_kombinacije == FULL:
             return full(met)
-        if ime_kombinacije == 'Zaporedje štirih zaporednih':
+        if ime_kombinacije == ZAP4:
             return stiri_zaporedne(met)
-        if ime_kombinacije == 'Zaporedje petih zaporednih':
+        if ime_kombinacije == ZAP5:
             return pet_zaporednih(met)
 
 
@@ -128,28 +128,28 @@ class Kockanje:
         """V tabelo zapiše ustrezen rezultat za dano kombinacijo"""
         
         met = self.trenutni_met
-        if ime_kombinacije in [ENA, 'Dvojke', 'Trojke', 'Štirke', 'Petke', 'Šestke']:
+        if ime_kombinacije in [ENA, DVA, TRI, STIRI, PET, SEST]:
             if ime_kombinacije == ENA: i = 1
-            elif ime_kombinacije == 'Dvojke': i = 2
-            elif ime_kombinacije == 'Trojke': i = 3
-            elif ime_kombinacije == 'Štirke': i = 4
-            elif ime_kombinacije == 'Petke': i = 5
-            elif ime_kombinacije == 'Šestke': i = 6
+            elif ime_kombinacije == DVA: i = 2
+            elif ime_kombinacije == TRI: i = 3
+            elif ime_kombinacije == STIRI: i = 4
+            elif ime_kombinacije == PET: i = 5
+            elif ime_kombinacije == SEST: i = 6
             self.tabela[ime_kombinacije] = met.count(i) * i
 
-        elif ime_kombinacije in ['Tri enake', 'Štiri enake', 'Chance']:
+        elif ime_kombinacije in [TRIP, QUAD, CHNC]:
             self.tabela[ime_kombinacije] = sum(met)
 
-        elif ime_kombinacije == 'Full':
+        elif ime_kombinacije == FULL:
             self.tabela[ime_kombinacije] = 25
             
-        elif ime_kombinacije == 'Zaporedje štirih zaporednih':
+        elif ime_kombinacije == ZAP4:
             self.tabela[ime_kombinacije] = 30
 
-        elif ime_kombinacije == 'Zaporedje petih zaporednih':
+        elif ime_kombinacije == ZAP5:
             self.tabela[ime_kombinacije] = 40
 
-        elif ime_kombinacije == 'Yahtzee':
+        elif ime_kombinacije == YAHT:
             self.tabela[ime_kombinacije] = 50
 
         else:
