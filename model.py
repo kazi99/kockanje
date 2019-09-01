@@ -4,12 +4,26 @@ C = 2
 D = 3
 E = 4
 
+ENA = 'Enke'
+DVA = 'Dvojke'
+TRI = 'Trojke'
+STIRI = 'Štirke'
+PET = 'Petke'
+SEST = 'Šestke'
+TRIP = 'Tri enake'
+QUAD = 'Štiri enake'
+FULL = 'Full'
+ZAP4 = 'Zaporedje štirih zaporednih'
+ZAP5 = 'Zaporedje petih zaporednih'
+YAHT = 'Yahtzee'
+CHNC = 'Chance'
+
 KOCKA = [1, 2, 3, 4, 5, 6]
 ZACETEK = [0 for _ in range(len(KOCKA) - 1)]
 
 STEVILO_METOV = 3
 
-TABELA = {'Enke': None, 'Dvojke': None, 'Trojke': None, 'Štirke': None, 'Petke': None, 'Šestke': None, 'Tri enake': None, 'Štiri enake': None, 'Full': None, 'Zaporedje štirih zaporednih': None, 'Zaporedje petih zaporednih': None, 'Yahtzee': None, 'Chance': None}
+TABELA = {ENA: None, 'Dvojke': None, 'Trojke': None, 'Štirke': None, 'Petke': None, 'Šestke': None, 'Tri enake': None, 'Štiri enake': None, 'Full': None, 'Zaporedje štirih zaporednih': None, 'Zaporedje petih zaporednih': None, 'Yahtzee': None, 'Chance': None}
 
 KOMBINACIJE = [key for key in TABELA]
 
@@ -113,10 +127,9 @@ class Kockanje:
     def tockovanje(self, ime_kombinacije):   
         """V tabelo zapiše ustrezen rezultat za dano kombinacijo"""
         
-
         met = self.trenutni_met
-        if ime_kombinacije in ['Enke', 'Dvojke', 'Trojke', 'Štirke', 'Petke', 'Šestke']:
-            if ime_kombinacije == 'Enke': i = 1
+        if ime_kombinacije in [ENA, 'Dvojke', 'Trojke', 'Štirke', 'Petke', 'Šestke']:
+            if ime_kombinacije == ENA: i = 1
             elif ime_kombinacije == 'Dvojke': i = 2
             elif ime_kombinacije == 'Trojke': i = 3
             elif ime_kombinacije == 'Štirke': i = 4
