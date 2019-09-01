@@ -13,8 +13,8 @@ SEST = 'Šestke'
 TRIP = 'Tri enake'
 QUAD = 'Štiri enake'
 FULL = 'Full'
-ZAP4 = 'Zaporedje štirih zaporednih'
-ZAP5 = 'Zaporedje petih zaporednih'
+ZAP4 = 'Štiri zaporedne'
+ZAP5 = 'Pet zaporednih'
 YAHT = 'Yahtzee'
 CHNC = 'Chance'
 
@@ -152,6 +152,12 @@ class Kockanje:
         elif ime_kombinacije == YAHT:
             self.tabela[ime_kombinacije] = 50
 
+        # else:
+        #     self.tabela[ime_kombinacije] = 0
+
+    def vpisovanje_v_tabelo(self, ime_kombinacije):
+        if self.preveri_kombinacijo(ime_kombinacije):
+            self.tockovanje(ime_kombinacije)
         else:
             self.tabela[ime_kombinacije] = 0
 
