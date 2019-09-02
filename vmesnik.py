@@ -66,8 +66,13 @@ def osnovna_tabela():
     print('========================\n')
     metanje()
 
-def main():
+def kockanje():
     while True:
         začetni_meni()
 
-main()
+kockanje()
+
+# zakaj ne vrže vseh kock če ne napišem nič
+# zakaj se v tabeli ob začetku nove poteze ne resetirajo kocke nazaj na ZAČETEK
+
+# napiši funkcije ki ujemajo met in poteza z ustreznimi števnostmi
