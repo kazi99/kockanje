@@ -19,7 +19,7 @@ YAHT = 'Yahtzee'
 CHNC = 'Chance'
 
 KOCKA = [1, 2, 3, 4, 5, 6]
-ZACETEK = [0 for _ in range(len(KOCKA) - 1)]
+ZACETEK = [0 for _ in range(5)]
 
 STEVILO_METOV = 3
 
@@ -87,7 +87,7 @@ class Kockanje:
             self.preostanek_metov -= 1
         else:
             self.trenutni_met = ZACETEK
-            self.poteze -= 1
+#            self.poteze -= 1
     
     def naslednja_poteza(self):
             if self.poteze > 0:
@@ -139,7 +139,7 @@ class Kockanje:
 
 
     def tockovanje(self, ime_kombinacije):   
-        """V tabelo zapiše ustrezen rezultat za dano kombinacijo"""
+        """Izračuna ustrezen rezultat za dano kombinacijo in jo vpiše v tabelo"""
         
         met = self.trenutni_met
         if ime_kombinacije in [ENA, DVA, TRI, STIRI, PET, SEST]:
@@ -170,13 +170,57 @@ class Kockanje:
         #     self.tabela[ime_kombinacije] = 0
 
     def vpisovanje_v_tabelo(self, ime_kombinacije):
+        """"""
         if self.preveri_kombinacijo(ime_kombinacije):
             self.tockovanje(ime_kombinacije)
         else:
             self.tabela[ime_kombinacije] = 0
 
-    def konec_kockanja(self):
+    def postavi_kocke_na_zacetek(self):
+        self.trenutni_met = ZACETEK
+
+    def skupni_sestevek(self):
+        sestevek = 0
         for key in self.tabela:
-            if self.tabela[key] == None:
-                return False
-        return True
+            if self.tabela[key] != None:
+                sestevek += self.tabela[key]
+        return sestevek
+
+    # def konec_kockanja(self):
+    #     for key in self.tabela:
+    #         if self.tabela[key] == None:
+    #             return False
+    #     return True
+
+    def konec_kockanja(self):
+        return self.poteze <= 0
+
+    def met_lepo(self):
+        if self.preostanek_metov == 3:
+            return 'mete'
+        elif self.preostanek_metov == 2:
+            return 'meta'
+        elif self.preostanek_metov == 1:
+            return 'met'
+        else:
+            return 'metov'
+
+    def poteza_lepo(self):
+        if self.poteze == 1:
+            return 'potezo'
+        elif self.poteze == 2:
+            return 'potezi'
+        elif self.poteze == 3 or self.poteze == 4:
+            return 'poteze'
+        else:
+            return 'potez'
+
+
+
+def lepsa_tabela(x):
+        if x == None:
+            return '  '
+        elif len(str(x)) == 1:
+            return ' ' + str(x)
+        else:
+            return x
