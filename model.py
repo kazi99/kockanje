@@ -19,7 +19,8 @@ YAHT = 'Yahtzee'
 CHNC = 'Chance'
 
 KOCKA = [1, 2, 3, 4, 5, 6]
-ZACETEK = [0 for _ in range(5)]
+#ZACETEK = [0 for _ in range(5)]
+ZACETEK = [0,0,0,0,0]
 
 STEVILO_METOV = 3
 
@@ -169,6 +170,10 @@ class Kockanje:
         # else:
         #     self.tabela[ime_kombinacije] = 0
 
+    def preveri_vpisovanje(self, ime_kombinacije):
+        """Prepreči da bi določeno kombinacjo še enkrat vpisal v tabelo."""
+        return self.tabela[ime_kombinacije] == None
+            
     def vpisovanje_v_tabelo(self, ime_kombinacije):
         """"""
         if self.preveri_kombinacijo(ime_kombinacije):
@@ -215,6 +220,12 @@ class Kockanje:
         else:
             return 'potez'
 
+    def reset(self):
+        self.tabela = TABELA
+        self.poteze = ST_POTEZ
+        self.preostanek_metov = STEVILO_METOV
+        self.trenutni_met = ZACETEK
+        self.odprte_kombinacije = KOMBINACIJE
 
 
 def lepsa_tabela(x):
