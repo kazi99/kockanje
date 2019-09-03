@@ -61,12 +61,12 @@ def pet_zaporednih(met):
 
 class Kockanje:
 
-    def __init__(self, tabela=TABELA, poteze=ST_POTEZ, preostanek_metov=STEVILO_METOV, trenutni_met=ZACETEK, odprte_kombinacije=KOMBINACIJE):
-        self.tabela = tabela
+    def __init__(self, poteze=ST_POTEZ, preostanek_metov=STEVILO_METOV):
+        self.tabela = dict(TABELA)
+        self.trenutni_met = [i for i in ZACETEK]
+        self.odprte_kombinacije = KOMBINACIJE.copy()
         self.poteze = poteze
         self.preostanek_metov = preostanek_metov
-        self.trenutni_met = trenutni_met
-        self.odprte_kombinacije = odprte_kombinacije
 
     def vrzi(self, izbira='ABCDE'):
         if self.preostanek_metov == STEVILO_METOV or izbira == '':
@@ -87,14 +87,14 @@ class Kockanje:
         if self.preostanek_metov > 0:
             self.preostanek_metov -= 1
         else:
-            self.trenutni_met = ZACETEK
+            self.trenutni_met = ZACETEK.copy()
 #            self.poteze -= 1
     
     def naslednja_poteza(self):
             if self.poteze > 0:
                 self.poteze -= 1
                 self.preostanek_metov = STEVILO_METOV
-                self.trenutni_met = ZACETEK
+                self.trenutni_met = ZACETEK.copy()
             else:
                 raise Exception
 
@@ -182,7 +182,7 @@ class Kockanje:
             self.tabela[ime_kombinacije] = 0
 
     def postavi_kocke_na_zacetek(self):
-        self.trenutni_met = ZACETEK
+        self.trenutni_met = ZACETEK.copy()
 
     def skupni_sestevek(self):
         sestevek = 0
@@ -221,11 +221,11 @@ class Kockanje:
             return 'potez'
 
     def reset(self):
-        self.tabela = TABELA
+        self.tabela = TABELA.copy()
         self.poteze = ST_POTEZ
         self.preostanek_metov = STEVILO_METOV
-        self.trenutni_met = ZACETEK
-        self.odprte_kombinacije = KOMBINACIJE
+        self.trenutni_met = ZACETEK.copy()
+        self.odprte_kombinacije = KOMBINACIJE.copy()
 
 
 def lepsa_tabela(x):
