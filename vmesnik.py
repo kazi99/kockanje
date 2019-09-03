@@ -45,7 +45,7 @@ def zadnji_met():
     if izbira in igralec.odprte_kombinacije:
         vpisovanje(izbira)
     else:
-        print('To ni veljavna kombinacija, poskusi še enkrat')
+        print('To ni veljavna kombinacija, poskusi še enkrat.')
         metanje()
 
 
