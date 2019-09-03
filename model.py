@@ -68,7 +68,7 @@ class Kockanje:
         self.odprte_kombinacije = odprte_kombinacije
 
     def vrzi(self, izbira='ABCDE'):
-        if self.preostanek_metov == STEVILO_METOV:
+        if self.preostanek_metov == STEVILO_METOV or izbira == '':
             for i in range(5):
                 self.trenutni_met[i] = random.choice(KOCKA)
 
@@ -110,6 +110,20 @@ class Kockanje:
         """Preveri ali kombinacija v metu ustreza imenu kombinacje v tabeli"""
 
         met = self.trenutni_met
+        if ime_kombinacije == ENA:
+            return True
+        if ime_kombinacije == DVA:
+            return True
+        if ime_kombinacije == TRI:
+            return True
+        if ime_kombinacije == STIRI:
+            return True
+        if ime_kombinacije == PET:
+            return True
+        if ime_kombinacije == SEST:
+            return True
+        if ime_kombinacije == CHNC:
+            return True
         if ime_kombinacije == TRIP: 
             return n_enake(met, 3)
         if ime_kombinacije == QUAD:
