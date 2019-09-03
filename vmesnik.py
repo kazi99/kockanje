@@ -1,7 +1,6 @@
-from model import Kockanje, ENA, DVA, TRI, STIRI, PET, SEST, TRIP, QUAD, FULL, ZAP4, ZAP5, YAHT, CHNC, STEVILO_METOV, ZACETEK, KOCKA, lepsa_tabela
+from model import Kockanje, ENA, DVA, TRI, STIRI, PET, SEST, TRIP, QUAD, FULL, ZAP4, ZAP5, YAHT, CHNC, STEVILO_METOV, ZACETEK, KOCKA, lepsa_tabela, TABELA
 
-
-igralec = Kockanje(poteze=1)
+igralec = Kockanje(poteze=3)
 
 def začetni_meni():
     print('Dobordošli v kockanju!')
@@ -13,13 +12,17 @@ def začetni_meni():
         baza()
 
 def vpisovanje(kombinacija):
-    igralec.vpisovanje_v_tabelo(kombinacija)
-    igralec.naslednja_poteza()
-    igralec.trenutni_met = [0,0,0,0,0] # zaenkrat edini nacin, ki ga poznam, kako resetirati kocke pred zacetkom naslednje poteze
-    baza()
+    if igralec.preveri_vpisovanje(kombinacija):
+        igralec.vpisovanje_v_tabelo(kombinacija)
+        igralec.naslednja_poteza()
+        #igralec.trenutni_met = [0,0,0,0,0] # zaenkrat edini nacin, ki ga poznam, kako resetirati kocke pred zacetkom naslednje poteze
+        baza()
+    else:
+        print('\x1b[0;31;5m' + 'Ta kombinacija je že vpisana, izberi drugo.'.upper() + '\x1b[0m')
+        baza()
 
 def prvi_met():
-    izbira = input('Pritisni [enter] za met kock >> ')
+    izbira = input('   Pritisni [enter] za met kock ')
     if izbira == '':
         igralec.vrzi()
         igralec.naslednji_met()
@@ -89,6 +92,8 @@ def konec():
     print('====================================')
     izbira = input('     Za izhod pritisni [enter]')
     if izbira == '':
+        igralec.reset()
+        igralec.tabela = TABELA
         začetni_meni()
     else:
         konec()
@@ -100,7 +105,7 @@ def baza():
         konec()
 
 def kockanje():
-    for i in range(10):
+    while True:
         začetni_meni()
 
 kockanje()
