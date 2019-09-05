@@ -1,15 +1,15 @@
 from model import Kockanje, ENA, DVA, TRI, STIRI, PET, SEST, TRIP, QUAD, FULL, ZAP4, ZAP5, YAHT, CHNC, STEVILO_METOV, ZACETEK, KOCKA, lepsa_tabela, TABELA
 
-igralec = Kockanje(poteze=3)
+igralec = Kockanje()
 
-def začetni_meni():
+def zacetni_meni():
     print('Dobordošli v kockanju!')
     print('Želiš začeti?')
     izbira = input('(Y/N) >> ')
     if izbira.upper() == 'Y':
         baza()
     else:
-        baza()
+        zacetni_meni()
 
 def vpisovanje(kombinacija):
     if igralec.preveri_vpisovanje(kombinacija):
@@ -93,8 +93,7 @@ def konec():
     izbira = input('     Za izhod pritisni [enter]')
     if izbira == '':
         igralec.reset()
-        igralec.tabela = TABELA
-        začetni_meni()
+        zacetni_meni()
     else:
         konec()
 
@@ -106,11 +105,6 @@ def baza():
 
 def kockanje():
     while True:
-        začetni_meni()
+        zacetni_meni()
 
 kockanje()
-
-# zakaj ne vrže vseh kock če ne napišem nič ///
-# zakaj se v tabeli ob začetku nove poteze ne resetirajo kocke nazaj na ZACETEK ///
-
-# napiši funkcije ki ujemajo met in poteza z ustreznimi števnostmi
