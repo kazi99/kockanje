@@ -19,8 +19,7 @@ YAHT = 'Yahtzee'
 CHNC = 'Chance'
 
 KOCKA = [1, 2, 3, 4, 5, 6]
-#ZACETEK = [0 for _ in range(5)]
-ZACETEK = [0,0,0,0,0]
+ZACETEK = [0 for _ in range(5)]
 
 STEVILO_METOV = 3
 
@@ -88,7 +87,6 @@ class Kockanje:
             self.preostanek_metov -= 1
         else:
             self.trenutni_met = ZACETEK.copy()
-#            self.poteze -= 1
     
     def naslednja_poteza(self):
             if self.poteze > 0:
@@ -96,7 +94,7 @@ class Kockanje:
                 self.preostanek_metov = STEVILO_METOV
                 self.trenutni_met = ZACETEK.copy()
             else:
-                raise Exception
+                assert False
 
     def preveri_tabelo(self, ime_kombinacije):  
         """Preveri ali je kombinacija še odprta v tabeli"""
@@ -167,15 +165,11 @@ class Kockanje:
         elif ime_kombinacije == YAHT:
             self.tabela[ime_kombinacije] = 50
 
-        # else:
-        #     self.tabela[ime_kombinacije] = 0
-
     def preveri_vpisovanje(self, ime_kombinacije):
         """Prepreči da bi določeno kombinacjo še enkrat vpisal v tabelo."""
         return self.tabela[ime_kombinacije] == None
             
     def vpisovanje_v_tabelo(self, ime_kombinacije):
-        """"""
         if self.preveri_kombinacijo(ime_kombinacije):
             self.tockovanje(ime_kombinacije)
         else:
