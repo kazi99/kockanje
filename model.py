@@ -73,6 +73,14 @@ class Kockanje:
         else:
             self.trenutni_met = ZACETEK.copy()
 
+    def naslednja_poteza(self):
+            if self.poteze > 0:
+                self.poteze -= 1
+                self.preostanek_metov = STEVILO_METOV
+                self.trenutni_met = ZACETEK.copy()
+            else:
+                assert False
+
     def vrzi(self, izbira='ABCDE'):
         if self.preostanek_metov == STEVILO_METOV or izbira == '':
             for i in range(5):
@@ -89,13 +97,6 @@ class Kockanje:
                     self.trenutni_met[eval(i)] = random.choice(KOCKA)     
             self.naslednji_met()
     
-    def naslednja_poteza(self):
-            if self.poteze > 0:
-                self.poteze -= 1
-                self.preostanek_metov = STEVILO_METOV
-                self.trenutni_met = ZACETEK.copy()
-            else:
-                assert False
 
     # def preveri_tabelo(self, ime_kombinacije):  
     #     """Preveri ali je kombinacija še odprta v tabeli"""
@@ -174,9 +175,11 @@ class Kockanje:
         if self.preveri_kombinacijo(ime_kombinacije):
             self.tockovanje(ime_kombinacije)
             self.odprte_kombinacije.remove(ime_kombinacije)
+            self.naslednja_poteza()
         else:
             self.tabela[ime_kombinacije] = 0
             self.odprte_kombinacije.remove(ime_kombinacije)
+            self.naslednja_poteza()
 
     def postavi_kocke_na_zacetek(self):
         self.trenutni_met = ZACETEK.copy()

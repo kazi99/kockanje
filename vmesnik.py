@@ -14,8 +14,7 @@ def zacetni_meni():
 def vpisovanje(kombinacija):
     if igralec.preveri_vpisovanje(kombinacija):
         igralec.vpisovanje_v_tabelo(kombinacija)
-        igralec.naslednja_poteza()
-        #igralec.trenutni_met = [0,0,0,0,0] # zaenkrat edini nacin, ki ga poznam, kako resetirati kocke pred zacetkom naslednje poteze
+        #igralec.naslednja_poteza()
         baza()
     else:
         print('\x1b[0;31;5m' + 'Kombinacija {} je že vpisana, izberi drugo.'.format(kombinacija) + '\x1b[0m')
