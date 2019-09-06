@@ -10,7 +10,7 @@ def osnovna_stran():
     st_metov = igralec.preostanek_metov
     met = igralec.trenutni_met
     konec = igralec.konec_kockanja()
-    return bottle.template('kockanje_izgled.tpl', tabela=tabela, odprte_kombinacije=odprte_kombinacije, st_metov=st_metov, STEVILO_METOV = STEVILO_METOV, met=met, ZACETEK=ZACETEK, konec=konec)
+    return bottle.template('kockanje_izgled.html', tabela=tabela, odprte_kombinacije=odprte_kombinacije, st_metov=st_metov, STEVILO_METOV = STEVILO_METOV, met=met, ZACETEK=ZACETEK, konec=konec)
 
 @bottle.post('/izberi-met/')
 def izberi_met():
