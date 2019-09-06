@@ -170,6 +170,7 @@ class Kockanje:
         return self.tabela[ime_kombinacije] == None
             
     def vpisovanje_v_tabelo(self, ime_kombinacije):
+        self.odprte_kombinacije.remove(ime_kombinacije)
         if self.preveri_kombinacijo(ime_kombinacije):
             self.tockovanje(ime_kombinacije)
         else:
