@@ -43,7 +43,7 @@
                 %end
             </tr>
         </table>
-        
+
         % elif st_metov == STEVILO_METOV:
         <table>
             <tr>
@@ -94,7 +94,9 @@
         </table>
         % end
     </div>
-
+    <div>
+        {{ met }} {{ poteze }} {{ st_metov}}
+    </div>
     <div>
         <form action='/reset/' action="GET">
             <input type="submit" value="Resetiraj" name="resetiranje">
