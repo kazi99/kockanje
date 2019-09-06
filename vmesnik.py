@@ -1,4 +1,4 @@
-from model import Kockanje, ENA, DVA, TRI, STIRI, PET, SEST, TRIP, QUAD, FULL, ZAP4, ZAP5, YAHT, CHNC, STEVILO_METOV, ZACETEK, KOCKA, lepsa_tabela, TABELA
+from model import Kockanje, ENA, DVA, TRI, STIRI, PET, SEST, TRIP, QUAD, FULL, ZAP4, ZAP5, YAHT, CHNC, STEVILO_METOV, ZACETEK, KOCKA, lepsa_tabela, TABELA, KOMBINACIJE
 
 igralec = Kockanje()
 
@@ -18,11 +18,11 @@ def vpisovanje(kombinacija):
         #igralec.trenutni_met = [0,0,0,0,0] # zaenkrat edini nacin, ki ga poznam, kako resetirati kocke pred zacetkom naslednje poteze
         baza()
     else:
-        print('\x1b[0;31;5m' + 'Ta kombinacija je že vpisana, izberi drugo.'.upper() + '\x1b[0m')
+        print('\x1b[0;31;5m' + 'Kombinacija {} je že vpisana, izberi drugo.'.format(kombinacija) + '\x1b[0m')
         baza()
 
 def prvi_met():
-    izbira = input('   Pritisni [enter] za met kock ')
+    izbira = input('   Pritisni [enter] za met kock \n')
     if izbira == '':
         igralec.vrzi()
         igralec.naslednji_met()
@@ -33,7 +33,7 @@ def prvi_met():
 def vmesni_met():
     print('Če želiš vpisati svoj met, napiši ime kombinacije, sicer napiši indekse kock, ki jih želiš ponovno vreči. ')
     izbira = input('>> ').capitalize()
-    if izbira in igralec.odprte_kombinacije:
+    if izbira in KOMBINACIJE: # igralec.odprte_kombinacije:
         vpisovanje(izbira)
     else:
         igralec.vrzi(izbira)
@@ -45,8 +45,8 @@ def zadnji_met():
     if izbira in igralec.odprte_kombinacije:
         vpisovanje(izbira)
     else:
-        print('To ni veljavna kombinacija, poskusi še enkrat.')
-        metanje()
+        print('\x1b[0;31;5m' + 'To ni veljavna kombinacija, poskusi še enkrat.' + '\x1b[0m')
+        baza()
 
 
 def metanje():
@@ -82,15 +82,32 @@ def osnovna_tabela():
     print('    {} | {} | {} | {} | {}\n'.format(igralec.trenutni_met[0], igralec.trenutni_met[1], igralec.trenutni_met[2], igralec.trenutni_met[3], igralec.trenutni_met[4]))
     print('Na voljo imaš še {} {} in {} {}.'.format(igralec.preostanek_metov, igralec.met_lepo(), igralec.poteze, igralec.poteza_lepo()))
     print('====================================\n')
+    #print(igralec.odprte_kombinacije)
     metanje()
 
 def konec():
     print('====================================')
+    print('')
+    print('')
+    print('')
+    print('')
+    print('')
+    print('')
+    print('')
+    print('')
     print('             ČESTITKE               ')
     print('    Tvoje skupno število točk je:   ')
     print('                {}                  '.format(lepsa_tabela(igralec.skupni_sestevek())))
-    print('====================================')
-    izbira = input('     Za izhod pritisni [enter]')
+    print('')
+    print('')
+    print('')
+    print('')
+    print('')
+    print('')
+    print('')
+    print('')
+    print('====================================\n')
+    izbira = input('     Za izhod pritisni [enter]\n')
     if izbira == '':
         igralec.reset()
         zacetni_meni()

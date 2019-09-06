@@ -96,14 +96,14 @@ class Kockanje:
             else:
                 assert False
 
-    def preveri_tabelo(self, ime_kombinacije):  
-        """Preveri ali je kombinacija še odprta v tabeli"""
+    # def preveri_tabelo(self, ime_kombinacije):  
+    #     """Preveri ali je kombinacija še odprta v tabeli"""
 
-        if ime_kombinacije not in self.odprte_kombinacije:
-            return False
-        else:
-            self.odprte_kombinacije.remove(ime_kombinacije)
-            return True
+    #     if ime_kombinacije not in self.odprte_kombinacije:
+    #         return False
+    #     else:
+    #         self.odprte_kombinacije.remove(ime_kombinacije)
+    #         return True
 
     def preveri_kombinacijo(self, ime_kombinacije): 
         """Preveri ali kombinacija v metu ustreza imenu kombinacje v tabeli"""
@@ -170,11 +170,12 @@ class Kockanje:
         return self.tabela[ime_kombinacije] == None
             
     def vpisovanje_v_tabelo(self, ime_kombinacije):
-        self.odprte_kombinacije.remove(ime_kombinacije)
         if self.preveri_kombinacijo(ime_kombinacije):
             self.tockovanje(ime_kombinacije)
+            self.odprte_kombinacije.remove(ime_kombinacije)
         else:
             self.tabela[ime_kombinacije] = 0
+            self.odprte_kombinacije.remove(ime_kombinacije)
 
     def postavi_kocke_na_zacetek(self):
         self.trenutni_met = ZACETEK.copy()
