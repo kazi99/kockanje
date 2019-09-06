@@ -25,7 +25,7 @@ def prvi_met():
     izbira = input('   Pritisni [enter] za met kock \n')
     if izbira == '':
         igralec.vrzi()
-        igralec.naslednji_met()
+        #igralec.naslednji_met()
         baza()
     else:
         baza()
@@ -37,7 +37,7 @@ def vmesni_met():
         vpisovanje(izbira)
     else:
         igralec.vrzi(izbira)
-        igralec.naslednji_met()
+        #igralec.naslednji_met()
         baza()
 
 def zadnji_met():

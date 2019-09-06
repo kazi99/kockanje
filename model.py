@@ -67,13 +67,19 @@ class Kockanje:
         self.poteze = poteze
         self.preostanek_metov = preostanek_metov
 
+    def naslednji_met(self):
+        if self.preostanek_metov > 0:
+            self.preostanek_metov -= 1
+        else:
+            self.trenutni_met = ZACETEK.copy()
+
     def vrzi(self, izbira='ABCDE'):
         if self.preostanek_metov == STEVILO_METOV or izbira == '':
             for i in range(5):
                 self.trenutni_met[i] = random.choice(KOCKA)
+            self.naslednji_met()
 
-        if self.preostanek_metov > 0:
-
+        elif self.preostanek_metov > 0:
             if izbira != 'ABCDE':
                 izbira = izbira.upper()
                 izbira = list(set(list(izbira)))
@@ -81,12 +87,7 @@ class Kockanje:
             for i in izbira:
                 if i in 'ABCDE':
                     self.trenutni_met[eval(i)] = random.choice(KOCKA)     
-            
-    def naslednji_met(self):
-        if self.preostanek_metov > 0:
-            self.preostanek_metov -= 1
-        else:
-            self.trenutni_met = ZACETEK.copy()
+            self.naslednji_met()
     
     def naslednja_poteza(self):
             if self.poteze > 0:
