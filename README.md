@@ -6,9 +6,9 @@ Cilj programa je zvesto reproducirati in malce poenostaviti igro Jamb. Pravila t
 
 Repozitorij vsebuje naslednje pomebnejše datoteke oz. mape:
 
-*`model.py`, kjer je shranjen glavni del kode, ki poganja program, 
-*`vmesnik.py` in `spletni_vmesnik.py`, ki skrbita za lažjo predstavitev programa,
-*mapa `views` v kateri je sharanjena `.html` datoteka, ki omogoča lepši in funkcionalne prikaz programa v spletnem vmesniku. 
+* `model.py`, kjer je shranjen glavni del kode, ki poganja program, 
+* `vmesnik.py` in `spletni_vmesnik.py`, ki skrbita za lažjo predstavitev programa,
+* mapa `views` v kateri je sharanjena `.html` datoteka, ki omogoča lepši in funkcionalne prikaz programa v spletnem vmesniku. 
 
 ___
 ###### Izak Jenko - September 2019
