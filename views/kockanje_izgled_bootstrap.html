@@ -41,8 +41,8 @@
 
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         %if konec:
+        <h4> Kocke </h4>
         <table>
-            <th> Kocke </th>
             <tr>
             % for kocka in met: 
             <td>
@@ -57,8 +57,8 @@
         </table>
         
         % elif st_metov == STEVILO_METOV:
+        <h4> Kocke </h4>
         <table>
-            <th> Kocke </th>
             <tr>
             % for kocka in met: 
             <td>
@@ -77,8 +77,9 @@
         
         % elif st_metov > 0:
         <form action='/izberi-met/' method="POST">
+            <h4> Kocke </h4>
             <table>
-                <th> Kocke </th>
+                
                 <tr>
                     <td>
                         <div class="btn-group-toggle" data-toggle="buttons">
@@ -120,8 +121,8 @@
             <input class="btn btn-light btn-block" type="submit" value="Vrži še enkrat">
         </form>
         % else:
+        <h4> Kocke </h4>
         <table>
-            <th> Kocke </th>
             <tr>
             % for kocka in met: 
             <td>
@@ -135,17 +136,29 @@
             </tr>
         </table>
         % end
+
         <div>
             <form action='/reset/' action="GET">
                 <input class="btn btn-danger btn-block" type="submit" value="Resetiraj igro" name="resetiranje">
             </form>
         </div>
+
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <b> Skupni seštevek </b>
+                    </td>
+                    <td>
+                        {{ sestevek }}
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>    
 </div>
-    <div class="push">
-
-    </div>
+    <div class="push"></div>
 </div>
 
 <footer class="footer">

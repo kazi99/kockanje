@@ -11,7 +11,8 @@ def osnovna_stran():
     met = igralec.trenutni_met
     poteze = igralec.poteze
     konec = igralec.konec_kockanja()
-    return bottle.template('kockanje_izgled_bootstrap.html', tabela=tabela, odprte_kombinacije=odprte_kombinacije, st_metov=st_metov, STEVILO_METOV = STEVILO_METOV, met=met, poteze=poteze, ZACETEK=ZACETEK, konec=konec)
+    sestevek = igralec.skupni_sestevek()
+    return bottle.template('kockanje_izgled_bootstrap.html', tabela=tabela, odprte_kombinacije=odprte_kombinacije, st_metov=st_metov, STEVILO_METOV = STEVILO_METOV, met=met, poteze=poteze, ZACETEK=ZACETEK, konec=konec, sestevek=sestevek)
 
 @bottle.post('/izberi-met/')
 def izberi_met():
