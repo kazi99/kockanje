@@ -10,5 +10,7 @@ Repozitorij vsebuje naslednje pomebnejše datoteke oz. mape:
 * `vmesnik.py` in `spletni_vmesnik.py`, ki skrbita za lažjo predstavitev programa,
 * mapa `views` v kateri so sharanjene `.html` in `.css`  datoteke, ki omogočajo lepši in funkcionalen prikaz programa v spletnem vmesniku. 
 
+Spletno ogrodje za spletno stran je pridobljeno iz <https://getbootstrap.com>
+
 ___
 ###### Izak Jenko ~ September 2019 ~ UVP ~ [FMF](https://www.fmf.uni-lj.si/si/)
