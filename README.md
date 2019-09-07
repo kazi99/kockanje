@@ -8,7 +8,7 @@ Repozitorij vsebuje naslednje pomebnejše datoteke oz. mape:
 
 * `model.py`, kjer je shranjen glavni del kode, ki poganja program, 
 * `vmesnik.py` in `spletni_vmesnik.py`, ki skrbita za lažjo predstavitev programa,
-* mapa `views` v kateri so sharanjene `.html` in `.css`  datoteke, ki omogočajo lepši in funkcionalen prikaz programa v spletnem vmesniku. 
+* mapa `views` v kateri so sharanjene `.html` datoteke, ki omogočajo lepši in funkcionalen prikaz programa v spletnem vmesniku. 
 
 Spletno ogrodje za spletno stran je pridobljeno iz <https://getbootstrap.com>
 
