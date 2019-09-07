@@ -96,16 +96,6 @@ class Kockanje:
                 if i in 'ABCDE':
                     self.trenutni_met[eval(i)] = random.choice(KOCKA)     
             self.naslednji_met()
-    
-
-    # def preveri_tabelo(self, ime_kombinacije):  
-    #     """Preveri ali je kombinacija še odprta v tabeli"""
-
-    #     if ime_kombinacije not in self.odprte_kombinacije:
-    #         return False
-    #     else:
-    #         self.odprte_kombinacije.remove(ime_kombinacije)
-    #         return True
 
     def preveri_kombinacijo(self, ime_kombinacije): 
         """Preveri ali kombinacija v metu ustreza imenu kombinacje v tabeli"""
@@ -190,12 +180,6 @@ class Kockanje:
             if self.tabela[key] != None:
                 sestevek += self.tabela[key]
         return sestevek
-
-    # def konec_kockanja(self):
-    #     for key in self.tabela:
-    #         if self.tabela[key] == None:
-    #             return False
-    #     return True
 
     def konec_kockanja(self):
         return self.poteze <= 0

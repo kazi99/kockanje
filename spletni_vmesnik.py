@@ -18,7 +18,6 @@ def osnovna_stran():
 def izberi_met():
     if igralec.preostanek_metov == STEVILO_METOV:
         igralec.vrzi()
-        #igralec.naslednji_met()
         bottle.redirect('/')
     elif igralec.preostanek_metov < STEVILO_METOV:
         a = bottle.request.forms.get('a')
@@ -33,7 +32,6 @@ def izberi_met():
             if sez[i] != None:
                 niz += imena[i]        
         igralec.vrzi(niz)
-        #igralec.naslednji_met()
         bottle.redirect('/')
 
 @bottle.post('/izberi-kombinacjo/0/')
