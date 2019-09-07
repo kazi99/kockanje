@@ -8,7 +8,7 @@ Repozitorij vsebuje naslednje pomebnejše datoteke oz. mape:
 
 * `model.py`, kjer je shranjen glavni del kode, ki poganja program, 
 * `vmesnik.py` in `spletni_vmesnik.py`, ki skrbita za lažjo predstavitev programa,
-* mapa `views` v kateri je sharanjena `.html` datoteka, ki omogoča lepši in funkcionalen prikaz programa v spletnem vmesniku. 
+* mapa `views` v kateri so sharanjene `.html` in `.css`  datoteke, ki omogočajo lepši in funkcionalen prikaz programa v spletnem vmesniku. 
 
 ___
-###### Izak Jenko ~ September 2019 ~ [FMF](https://www.fmf.uni-lj.si/si/)
+###### Izak Jenko ~ September 2019 ~ UVP ~ [FMF](https://www.fmf.uni-lj.si/si/)
