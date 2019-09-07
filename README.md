@@ -11,4 +11,4 @@ Repozitorij vsebuje naslednje pomebnejše datoteke oz. mape:
 * mapa `views` v kateri je sharanjena `.html` datoteka, ki omogoča lepši in funkcionalen prikaz programa v spletnem vmesniku. 
 
 ___
-###### Izak Jenko - September 2019 - [FMF](https://www.fmf.uni-lj.si/si/)
+###### Izak Jenko ~ September 2019 ~ [FMF](https://www.fmf.uni-lj.si/si/)
