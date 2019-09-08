@@ -105,3 +105,7 @@ venv.bak/
 
 # ignore folder .vscode
 .vscode/
+
+# ignores .DS_Store
+.DS_Store
+.DS_Store?
