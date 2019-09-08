@@ -109,3 +109,6 @@ venv.bak/
 # ignores .DS_Store
 .DS_Store
 .DS_Store?
+
+# ignore bottle
+bottle.py
