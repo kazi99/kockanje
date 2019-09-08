@@ -1,9 +1,9 @@
 from model import Kockanje, ENA, DVA, TRI, STIRI, PET, SEST, TRIP, QUAD, FULL, ZAP4, ZAP5, YAHT, CHNC, STEVILO_METOV, ZACETEK, KOCKA, lepsa_tabela, TABELA, KOMBINACIJE
 
-igralec = Kockanje(poteze=3)
+igralec = Kockanje()
 
 def zacetni_meni():
-    print('\x1b[0;34;5m' + 'Predlagam ti, da terminal odpreš vsaj do te višine.' + '\x1b[0m')
+    print('\x1b[0;34;1m' + 'Predlagam ti, da terminal odpreš vsaj do te višine.' + '\x1b[0m')
     print('')
     print('====================================')
     print('')
